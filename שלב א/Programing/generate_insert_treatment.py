@@ -4,7 +4,7 @@ from treatment_descriptions import treatment_descriptions
 from medication_descriptions import medication_descriptions
 from medication_names import medication_names
 
-ROWS = 999
+ROWS = 1000
 # ROWS = 20000
 FK = 500
 
@@ -48,10 +48,10 @@ def generate_treatment_insert_queries():
 
 
 # Generate queries for Medication table
-# medication_queries = generate_medication_insert_queries()
-# with open("medication_inserts.sql", "w") as f:
-#     for query in medication_queries:
-#         f.write(query + "\n")
+medication_queries = generate_medication_insert_queries()
+with open("medication_inserts.sql", "w") as f:
+    for query in medication_queries:
+        f.write(query + "\n")
 
 # Generate queries for Treatment table
 treatment_queries = generate_treatment_insert_queries()
