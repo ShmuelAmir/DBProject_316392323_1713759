@@ -33,14 +33,14 @@ CREATE TABLE Patient (
 CREATE TABLE Medication (
     MedicationID NUMBER PRIMARY KEY,
     Name VARCHAR2(100),
-    Description CLOB,
+    Description VARCHAR2(255),
     ExpirationDate DATE,
     QuantityInStock NUMBER
 );
 
 CREATE TABLE Treatment (
     TreatmentID NUMBER PRIMARY KEY,
-    Description CLOB,
+    Description VARCHAR2(255),
     PatientID NUMBER,
     DoctorID NUMBER,
     TreatmentDate DATE,

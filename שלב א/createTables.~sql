@@ -30,22 +30,22 @@ CREATE TABLE Patient (
     CONSTRAINT fk_patient_department FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
 );
 
+CREATE TABLE Medication (
+    MedicationID NUMBER PRIMARY KEY,
+    Name VARCHAR2(100),
+    Description CLOB,
+    ExpirationDate DATE,
+    QuantityInStock NUMBER
+);
+
 CREATE TABLE Treatment (
     TreatmentID NUMBER PRIMARY KEY,
     Description CLOB,
     PatientID NUMBER,
     DoctorID NUMBER,
     TreatmentDate DATE,
+    MedicationID NUMBER,
     CONSTRAINT fk_treatment_patient FOREIGN KEY (PatientID) REFERENCES Patient(PatientID),
-    CONSTRAINT fk_treatment_doctor FOREIGN KEY (DoctorID) REFERENCES Doctor(DoctorID)
-);
-
-CREATE TABLE Medication (
-    MedicationID NUMBER PRIMARY KEY,
-    Name VARCHAR2(100),
-    Description CLOB,
-    ExpirationDate DATE,
-    QuantityInStock NUMBER,
-    TreatmentID NUMBER,
-    CONSTRAINT fk_medication_treatment FOREIGN KEY (TreatmentID) REFERENCES Treatment(TreatmentID)
+    CONSTRAINT fk_treatment_doctor FOREIGN KEY (DoctorID) REFERENCES Doctor(DoctorID),
+    CONSTRAINT fk_treatment_medication FOREIGN KEY (MedicationID) REFERENCES Medication(MedicationID)
 );
