@@ -8,6 +8,4 @@ SELECT 'PATIENT' AS table_name, COUNT(*) AS row_count FROM PATIENT
 UNION ALL
 SELECT 'MEDICATION' AS table_name, COUNT(*) AS row_count FROM MEDICATION
 UNION ALL
-SELECT 'TREATMENT' AS table_name, COUNT(*) AS row_count FROM TREATMENT
-UNION ALL
-SELECT 'Medication_Treatment' AS table_name, COUNT(*) AS row_count FROM Medication_Treatment;
+SELECT 'TREATMENT' AS table_name, COUNT(*) AS row_count FROM TREATMENT;

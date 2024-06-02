@@ -26,8 +26,8 @@ CREATE TABLE Patient (
     Name VARCHAR2(100) NOT NULL,
     DateOfBirth DATE,
     Phone VARCHAR2(15),
-    DepartmentID NUMBER,
-    CONSTRAINT fk_patient_department FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
+    RoomID NUMBER,
+    CONSTRAINT fk_patient_room FOREIGN KEY (RoomID) REFERENCES Room(RoomID)
 );
 
 CREATE TABLE Medication (
@@ -44,8 +44,15 @@ CREATE TABLE Treatment (
     PatientID NUMBER NOT NULL,
     DoctorID NUMBER NOT NULL,
     TreatmentDate DATE NOT NULL,
-    MedicationID NUMBER NOT NULL,
     CONSTRAINT fk_treatment_patient FOREIGN KEY (PatientID) REFERENCES Patient(PatientID),
     CONSTRAINT fk_treatment_doctor FOREIGN KEY (DoctorID) REFERENCES Doctor(DoctorID),
     CONSTRAINT fk_treatment_medication FOREIGN KEY (MedicationID) REFERENCES Medication(MedicationID)
+);
+
+CREATE TABLE Medication_Treatment (
+    MedicationID INT,
+    TreatmentID INT,
+    PRIMARY KEY (MedicationID, TreatmentID),
+    FOREIGN KEY (MedicationID) REFERENCES Medications(MedicationID),
+    FOREIGN KEY (TreatmentID) REFERENCES Treatments(TreatmentID)
 );
