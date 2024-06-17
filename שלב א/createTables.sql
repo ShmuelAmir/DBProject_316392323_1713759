@@ -45,7 +45,7 @@ CREATE TABLE Treatment (
     DoctorID NUMBER NOT NULL,
     TreatmentDate DATE NOT NULL,
     CONSTRAINT fk_treatment_patient FOREIGN KEY (PatientID) REFERENCES Patient(PatientID),
-    CONSTRAINT fk_treatment_doctor FOREIGN KEY (DoctorID) REFERENCES Doctor(DoctorID),
+    CONSTRAINT fk_treatment_doctor FOREIGN KEY (DoctorID) REFERENCES Doctor(DoctorID) ON DELETE CASCADE,
     CONSTRAINT fk_treatment_medication FOREIGN KEY (MedicationID) REFERENCES Medication(MedicationID)
 );
 
@@ -54,5 +54,5 @@ CREATE TABLE Medication_Treatment (
     TreatmentID INT,
     PRIMARY KEY (MedicationID, TreatmentID),
     FOREIGN KEY (MedicationID) REFERENCES Medications(MedicationID),
-    FOREIGN KEY (TreatmentID) REFERENCES Treatments(TreatmentID)
+    CONSTRAINT fk_medication_treatment_treatment FOREIGN KEY (TreatmentID) REFERENCES Treatments(TreatmentID) ON DELETE CASCADE;
 );
