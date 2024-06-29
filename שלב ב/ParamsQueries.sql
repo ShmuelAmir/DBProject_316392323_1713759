@@ -16,7 +16,7 @@ WHERE d.Name = '&<name="Department Name"
 SELECT MedicationID, Name, Description, QuantityInStock
 FROM Medication
 WHERE QuantityInStock = '&<name="Quantity In Stock"
-                           list="10, 20, 30, 40">';
+                           list="SELECT DISTINCT QuantityInStock FROM MEDICATION ORDER BY QuantityInStock">';
 
 
 SELECT t.TreatmentID, t.Description, d.Name AS DoctorName, p.Name AS PatientName, t.TreatmentDate
